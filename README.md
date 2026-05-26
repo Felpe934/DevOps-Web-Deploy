@@ -14,6 +14,9 @@ Tres contenedores corriendo en una red privada de Docker:
 - nginx_server — recibe las peticiones HTTP
 - php_app — procesa el código PHP
 - mysql_db — base de datos relacional
+## Vista previa
+
+![App corriendo en Docker](assets/preview.png)
 
 ## Cómo ejecutar el proyecto
 1. Clona el repositorio
