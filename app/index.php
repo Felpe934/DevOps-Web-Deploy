@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>DevOps Web Deploy</h1>
-        <p class="subtitle">Aplicacion desplegada con Docker, Nginx y PHP</p>
+        <p class="subtitle">Aplicacion desplegada con Docker, Nginx, PHP y MySQL</p>
 
         <div class="badges">
             <span class="badge">Docker</span>
@@ -29,6 +29,53 @@
         <div class="status">
             <p id="status-text">Verificando conexion...</p>
         </div>
+
+        <?php
+        $host     = 'mysql_db';
+        $db       = 'devops_db';
+        $user     = 'devops_user';
+        $password = 'devops1234';
+
+        try {
+            $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $pdo->query("SELECT * FROM proyectos ORDER BY fecha DESC");
+            $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+
+        <div class="proyectos">
+            <h2>Proyectos desde MySQL</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Proyecto</th>
+                        <th>Tecnologias</th>
+                        <th>Descripcion</th>
+                        <th>Status</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($proyectos as $proyecto): ?>
+                    <tr>
+                        <td><?php echo $proyecto['nombre']; ?></td>
+                        <td><?php echo $proyecto['tecnologias']; ?></td>
+                        <td><?php echo $proyecto['descripcion']; ?></td>
+                        <td><span class="status-badge"><?php echo $proyecto['status']; ?></span></td>
+                        <td><?php echo $proyecto['fecha']; ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <?php
+        } catch (PDOException $e) {
+            echo '<div class="error">Error de conexion: ' . $e->getMessage() . '</div>';
+        }
+        ?>
+
     </div>
     <script src="script.js"></script>
 </body>

@@ -10,8 +10,9 @@ body {
     color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    padding: 40px 20px;
 }
 
 .container {
@@ -20,14 +21,20 @@ body {
     border: 1px solid #333;
     border-radius: 12px;
     background: #1a1a1a;
-    max-width: 600px;
-    width: 90%;
+    max-width: 1000px;
+    width: 100%;
 }
 
 h1 {
     color: #00bcd4;
     font-size: 2rem;
     margin-bottom: 10px;
+}
+
+h2 {
+    color: #00bcd4;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
 }
 
 .subtitle {
@@ -86,4 +93,60 @@ h1 {
 
 #status-text.offline {
     color: #f44336;
+}
+
+.proyectos {
+    margin-top: 40px;
+    text-align: left;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background: #00bcd4;
+    color: #000;
+}
+
+thead th {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #333;
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: #222;
+}
+
+tbody td {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: #cccccc;
+    vertical-align: top;
+}
+
+.status-badge {
+    background: #4caf50;
+    color: #000;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.error {
+    margin-top: 20px;
+    background: #f44336;
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
 }
